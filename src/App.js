@@ -24,7 +24,7 @@ class App extends Component {
       <div className="container p-4">
         <Header />
         <ScholarForm addScholar={this.addScholar} />
-        <ScholarsList scholarsList={this.state.scholarsList} />
+        <ScholarsList scholars={this.state.scholarsList} />
       </div>
     );
   }

@@ -15,6 +15,7 @@ class ScholarForm extends Component {
 
   addScholar = () => {
     this.props.addScholar(this.state.scholarName);
+    this.setState({ scholarName: "" });
   };
 
   render() {
