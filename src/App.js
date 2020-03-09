@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Header from "./Header";
+import ScholarForm from "./ScholarForm";
+import ScholarsList from "./ScholarsList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scholarsList: []
+    };
+  }
+
+  addScholar = scholarName => {
+    //adding scholar name to the top of the list
+    const updatedScholars = [...this.state.scholarsList];
+    updatedScholars.unshift(scholarName);
+
+    this.setState({ scholarsList: updatedScholars });
+  };
+
+  render() {
+    return (
+      <div className="container p-4">
+        <Header />
+        <ScholarForm addScholar={this.addScholar} />
+        <ScholarsList scholarsList={this.state.scholarsList} />
+      </div>
+    );
+  }
 }
 
 export default App;
